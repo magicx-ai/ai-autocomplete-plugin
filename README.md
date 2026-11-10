@@ -47,7 +47,7 @@ Then run `/ai-autocomplete:onboard` in your project, or ask Claude to onboard th
 
 ## What happens
 
-1. The agent calls `start_onboarding` and shows you a link and a code. Open the link, check that the page shows the same code, and approve.
+1. The agent calls `start_onboarding`, shows you a link and a code, and ends its turn. Open the link, check that the page shows the same code, approve, then tell the agent you approved.
 2. The agent relays your answers to the onboarding agent. It answers code questions itself, such as which framework the app uses or where the search box is.
 3. If your data has to be uploaded, the agent uploads the file with a signed link. The file never goes into the conversation.
 4. Once the preview is ready, the agent installs the SDK, checks that your search box still submits as before, and ends the session.
