@@ -43,7 +43,7 @@ Running `/ai-autocomplete:onboard` lets Claude work through the whole onboarding
 - reading and editing files in your project (installing the SDK);
 - shell commands (installing the package, starting your app to check the install, uploading your data file).
 
-This is broad on purpose: the commands differ from project to project, so a short list would still stop on most of them. Nothing is committed, so `git diff` shows everything that changed. If you would rather approve each step, ask Claude to onboard the project in your own words instead of running the command, or remove the `allowed-tools` line from the skill.
+This is broad on purpose: the commands differ from project to project, so a short list would still stop on most of them. Nothing is committed, so `git diff` shows everything that changed. If you would rather approve each step, remove the `allowed-tools` line from the skill (`plugin/skills/onboard/SKILL.md` in the installed plugin).
 
 The grant ends when you send your next message. When you answer the final question with a change, Claude asks before each step again unless your own settings allow it, for example in your project's `.claude/settings.json`:
 
