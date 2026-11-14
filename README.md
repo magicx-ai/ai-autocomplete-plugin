@@ -6,7 +6,7 @@ This repository lets a coding agent set up and install AI Autocomplete in your p
 - it asks you only what the code cannot answer, and once at the end whether to change anything;
 - it uploads your data and installs the SDK.
 
-You approve the connection once, in your browser.
+You sign in once, in your browser. Your coding agent keeps the sign-in and renews it, so later runs start straight away.
 
 It connects to AI Autocomplete's remote MCP server. There is nothing to install locally besides your coding agent.
 
@@ -25,6 +25,14 @@ Inside a session, the same command works as `/plugin install ai-autocomplete --m
 /plugin install ai-autocomplete@ai-autocomplete
 ```
 
+Sign in once:
+
+```bash
+claude mcp login plugin:ai-autocomplete:ai-autocomplete
+```
+
+Inside a session, `/mcp` does the same: select `ai-autocomplete` and authenticate. Your browser opens; choose the team the product should belong to and approve. To use another team later, sign in again.
+
 Then run `/ai-autocomplete:onboard` in your project, or ask Claude to onboard the project with AI Autocomplete.
 
 ## Codex
@@ -36,14 +44,16 @@ Then run `/ai-autocomplete:onboard` in your project, or ask Claude to onboard th
    ```
 
    You can also paste [`codex/config.toml.example`](codex/config.toml.example) into `~/.codex/config.toml`. By default Codex asks before each MCP tool call; the example's `default_tools_approval_mode = "approve"` lets the onboarding tools run without asking.
-2. Copy [`agents-skill/ai-autocomplete-onboard`](agents-skill/ai-autocomplete-onboard) to `.agents/skills/` in your project (or to `~/.agents/skills/`).
-3. Run `$ai-autocomplete-onboard`, or ask Codex to onboard the project with AI Autocomplete.
+2. Sign in once with `codex mcp login ai-autocomplete`, choosing your team in the browser.
+3. Copy [`agents-skill/ai-autocomplete-onboard`](agents-skill/ai-autocomplete-onboard) to `.agents/skills/` in your project (or to `~/.agents/skills/`).
+4. Run `$ai-autocomplete-onboard`, or ask Codex to onboard the project with AI Autocomplete.
 
 ## Cursor
 
 1. Add the server to `.cursor/mcp.json` in your project (or to `~/.cursor/mcp.json`), as in [`cursor/mcp.json.example`](cursor/mcp.json.example).
-2. Copy [`agents-skill/ai-autocomplete-onboard`](agents-skill/ai-autocomplete-onboard) to `.agents/skills/` in your project.
-3. Run `/ai-autocomplete-onboard`, or ask the agent to onboard the project with AI Autocomplete.
+2. Cursor shows the server as needing sign-in in its MCP settings; sign in there and choose your team in the browser.
+3. Copy [`agents-skill/ai-autocomplete-onboard`](agents-skill/ai-autocomplete-onboard) to `.agents/skills/` in your project.
+4. Run `/ai-autocomplete-onboard`, or ask the agent to onboard the project with AI Autocomplete.
 
 ## Say what only you know
 
@@ -57,7 +67,7 @@ Useful things to say: what the box should offer first, what it must never sugges
 
 ## What happens
 
-1. The agent calls `start_onboarding`, shows you a link and a code, and ends its turn. Open the link, check that the page shows the same code, approve, then tell the agent you approved.
+1. The agent connects with the sign-in you already did. If you have not signed in, it tells you how and stops.
 2. The agent reads your project and tells the onboarding agent what it found: the text box, what people do in it, each input and where its options live. It adds what you wrote with the command.
 3. The onboarding agent sets everything up from that. It asks you only what the code cannot answer, such as whether a list should be uploaded or filled in by your app when both are possible.
 4. If your data has to be uploaded, the agent uploads the file with a signed link. The file never goes into the conversation.
