@@ -35,6 +35,28 @@ Inside a session, `/mcp` does the same: select `ai-autocomplete` and authenticat
 
 Then run `/ai-autocomplete:onboard` in your project, or ask Claude to onboard the project with AI Autocomplete.
 
+### Approvals
+
+The onboarding calls AI Autocomplete's tools many times. The skill lets Claude call them without asking you each time, for the turn you start it in. Editing your files and running commands (installing the SDK, starting your app to check the install) still follow your own permission settings: in the default mode Claude asks before each one.
+
+To let it work through without stopping, start Claude in a mode that accepts edits (`claude --permission-mode acceptEdits`) or allow the commands it needs in your project's `.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_ai-autocomplete_ai-autocomplete__*",
+      "Edit",
+      "Write",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
+```
+
+The first rule also keeps the tools allowed after you answer the agent, when it applies a change you asked for.
+
 ## Codex
 
 1. Add the server:
