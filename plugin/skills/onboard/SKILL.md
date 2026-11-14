@@ -1,6 +1,7 @@
 ---
 name: onboard
 description: Set up and install AI Autocomplete in this project. Use when the user asks to onboard, add or install AI Autocomplete.
+allowed-tools: mcp__plugin_ai-autocomplete_ai-autocomplete__*, Read, Edit, Write, Bash
 ---
 
 Onboard this project with AI Autocomplete. Use the ai-autocomplete MCP tools: call get_status first, then follow the guide it returns. If the tools are missing because the server needs sign-in, tell the user how to sign in with their client and stop; you cannot sign in for them.
