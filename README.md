@@ -37,25 +37,23 @@ Then run `/ai-autocomplete:onboard` in your project, or ask Claude to onboard th
 
 ### Approvals
 
-The onboarding calls AI Autocomplete's tools many times. The skill lets Claude call them without asking you each time, for the turn you start it in. Editing your files and running commands (installing the SDK, starting your app to check the install) still follow your own permission settings: in the default mode Claude asks before each one.
+Running `/ai-autocomplete:onboard` lets Claude work through the whole onboarding without asking you to approve each step. For the turn you start it in, the skill allows:
 
-To let it work through without stopping, start Claude in a mode that accepts edits (`claude --permission-mode acceptEdits`) or allow the commands it needs in your project's `.claude/settings.json`:
+- AI Autocomplete's own tools;
+- reading and editing files in your project (installing the SDK);
+- shell commands (installing the package, starting your app to check the install, uploading your data file).
+
+This is broad on purpose: the commands differ from project to project, so a short list would still stop on most of them. Nothing is committed, so `git diff` shows everything that changed. If you would rather approve each step, ask Claude to onboard the project in your own words instead of running the command, or remove the `allowed-tools` line from the skill.
+
+The grant ends when you send your next message. When you answer the final question with a change, Claude asks before each step again unless your own settings allow it, for example in your project's `.claude/settings.json`:
 
 ```json
 {
   "permissions": {
-    "allow": [
-      "mcp__plugin_ai-autocomplete_ai-autocomplete__*",
-      "Edit",
-      "Write",
-      "Bash(npm install *)",
-      "Bash(npm run *)"
-    ]
+    "allow": ["mcp__plugin_ai-autocomplete_ai-autocomplete__*", "Edit", "Write", "Bash(npm install *)", "Bash(npm run *)"]
   }
 }
 ```
-
-The first rule also keeps the tools allowed after you answer the agent, when it applies a change you asked for.
 
 ## Codex
 
