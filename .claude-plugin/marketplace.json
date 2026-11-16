@@ -8,7 +8,17 @@
     {
       "name": "ai-autocomplete",
       "source": "./plugin",
-      "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent."
+      "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent.",
+      "author": {
+        "name": "MagicX"
+      },
+      "strict": false,
+      "mcpServers": {
+        "ai-autocomplete": {
+          "type": "http",
+          "url": "https://api.ai-autocomplete.com/api/agent-onboarding/mcp"
+        }
+      }
     }
   ]
 }
