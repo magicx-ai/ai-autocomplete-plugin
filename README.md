@@ -10,30 +10,41 @@ You sign in once, in your browser. Your coding agent keeps the sign-in and renew
 
 It connects to AI Autocomplete's remote MCP server. There is nothing to install locally besides your coding agent.
 
-> **This version points at the development API** (`https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp`), for internal testing.
+> **Not released yet.** Production is not switched on, and both plugins here point at the development API (`https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp`). For internal testing, paste `Install AI Autocomplete using https://ikes-sandwiches.ai-autocomplete.com/agent-install.md` instead of the sentence below. It installs the `ai-autocomplete-dev` plugin, whose command is `/ai-autocomplete-dev:onboard`.
 
 ## Claude Code
+
+Open Claude Code in your project and paste this:
+
+```
+Install AI Autocomplete using https://ai-autocomplete.com/agent-install.md
+```
+
+Claude installs the plugin and asks you to type two commands:
+
+1. `/reload-plugins` loads the plugin into the session you are in.
+2. `/ai-autocomplete:onboard` starts the onboarding.
+
+Your browser opens for the sign-in: choose the team the product should belong to and approve. Claude waits for that and carries on by itself. To use another team later, sign in again.
+
+Over SSH the browser cannot open on your side. Claude gives you the link instead; after approving, run `/ai-autocomplete:onboard` again.
+
+### By hand
+
+Install from a terminal, then start Claude Code and run `/ai-autocomplete:onboard`:
 
 ```bash
 claude plugin install ai-autocomplete --marketplace magicx-ai/ai-autocomplete-plugin
 ```
 
-Inside a session, the same command works as `/plugin install ai-autocomplete --marketplace magicx-ai/ai-autocomplete-plugin`. On older versions, run these two commands instead:
+Inside a session the same command works as `/plugin install ai-autocomplete --marketplace magicx-ai/ai-autocomplete-plugin`, followed by `/reload-plugins`. On older versions, run these two commands instead:
 
 ```
 /plugin marketplace add magicx-ai/ai-autocomplete-plugin
 /plugin install ai-autocomplete@ai-autocomplete
 ```
 
-Sign in once:
-
-```bash
-claude mcp login plugin:ai-autocomplete:ai-autocomplete
-```
-
-Inside a session, `/mcp` does the same: select `ai-autocomplete` and authenticate. Your browser opens; choose the team the product should belong to and approve. To use another team later, sign in again.
-
-Then run `/ai-autocomplete:onboard` in your project, or ask Claude to onboard the project with AI Autocomplete.
+To sign in yourself, run `claude mcp login plugin:ai-autocomplete:ai-autocomplete`, or `/mcp` inside a session: select `ai-autocomplete` and authenticate.
 
 ### Approvals
 
@@ -87,9 +98,13 @@ Useful things to say: what the box should offer first, what it must never sugges
 
 ## What happens
 
-1. The agent connects with the sign-in you already did. If you have not signed in, it tells you how and stops.
+1. The agent connects with the sign-in you already did. If you have not signed in, Claude Code opens the sign-in in your browser and waits for you to approve; Codex and Cursor tell you how to sign in and stop.
 2. The agent reads your project and tells the onboarding agent what it found: the text box, what people do in it, each input and where its options live. It adds what you wrote with the command.
 3. The onboarding agent sets everything up from that. It asks you only what the code cannot answer, such as whether a list should be uploaded or filled in by your app when both are possible.
 4. If your data has to be uploaded, the agent uploads the file with a signed link. The file never goes into the conversation.
 5. The agent installs the SDK, keeping your own input box, and checks that it still submits as before.
 6. You get one summary of what was set up and one question: anything you want changed? The agent applies what you ask, checks the install again and ends the session.
+
+## Development
+
+`plugin-dev/` is generated from `plugin/`. After changing `plugin/`, run `scripts/sync-dev-plugin.sh`; CI fails when the two differ in anything but the name.
