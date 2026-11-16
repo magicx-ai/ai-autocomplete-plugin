@@ -2,7 +2,7 @@
   "mcpServers": {
     "ai-autocomplete": {
       "type": "http",
-      "url": "https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp"
+      "url": "${AI_AUTOCOMPLETE_MCP_URL:-https://api.ai-autocomplete.com/api/agent-onboarding/mcp}"
     }
   }
 }

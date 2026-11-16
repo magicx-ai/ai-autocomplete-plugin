@@ -1,6 +1,6 @@
 # Add to ~/.codex/config.toml, or run:
-#   codex mcp add ai-autocomplete --url https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp
+#   codex mcp add ai-autocomplete --url https://api.ai-autocomplete.com/api/agent-onboarding/mcp
 [mcp_servers.ai-autocomplete]
-url = "https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp"
+url = "https://api.ai-autocomplete.com/api/agent-onboarding/mcp"
 # Codex asks before each MCP tool call unless this is set.
 default_tools_approval_mode = "approve"

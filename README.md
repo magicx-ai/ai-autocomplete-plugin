@@ -10,7 +10,7 @@ You sign in once, in your browser. Your coding agent keeps the sign-in and renew
 
 It connects to AI Autocomplete's remote MCP server. There is nothing to install locally besides your coding agent.
 
-> **Not released yet.** Production is not switched on, and both plugins here point at the development API (`https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp`). For internal testing, paste `Install AI Autocomplete using https://ikes-sandwiches.ai-autocomplete.com/agent-install.md` instead of the sentence below. It installs the `ai-autocomplete-dev` plugin, whose command is `/ai-autocomplete-dev:onboard`.
+> **Not released yet.** The production server is not switched on, so the sign-in does not work yet.
 
 ## Claude Code
 
@@ -25,9 +25,9 @@ Claude installs the plugin and asks you to type two commands:
 1. `/reload-plugins` loads the plugin into the session you are in.
 2. `/ai-autocomplete:onboard` starts the onboarding.
 
-Your browser opens for the sign-in: choose the team the product should belong to and approve. Claude waits for that and carries on by itself. To use another team later, sign in again.
+Claude shows a sign-in link and opens it in your browser when it can: choose the team the product should belong to and approve. Claude carries on by itself once you approve. To use another team later, sign in again.
 
-Over SSH the browser cannot open on your side. Claude gives you the link instead; after approving, run `/ai-autocomplete:onboard` again.
+Over SSH, open the link yourself. If the browser ends on a localhost page that does not load, paste that page's full address into the session.
 
 ### By hand
 
@@ -71,7 +71,7 @@ The grant ends when you send your next message. When you answer the final questi
 1. Add the server:
 
    ```bash
-   codex mcp add ai-autocomplete --url https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp
+   codex mcp add ai-autocomplete --url https://api.ai-autocomplete.com/api/agent-onboarding/mcp
    ```
 
    You can also paste [`codex/config.toml.example`](codex/config.toml.example) into `~/.codex/config.toml`. By default Codex asks before each MCP tool call; the example's `default_tools_approval_mode = "approve"` lets the onboarding tools run without asking.
@@ -104,7 +104,3 @@ Useful things to say: what the box should offer first, what it must never sugges
 4. If your data has to be uploaded, the agent uploads the file with a signed link. The file never goes into the conversation.
 5. The agent installs the SDK, keeping your own input box, and checks that it still submits as before.
 6. You get one summary of what was set up and one question: anything you want changed? The agent applies what you ask, checks the install again and ends the session.
-
-## Development
-
-`plugin-dev/` is generated from `plugin/`. After changing `plugin/`, run `scripts/sync-dev-plugin.sh`; CI fails when the two differ in anything but the name.
