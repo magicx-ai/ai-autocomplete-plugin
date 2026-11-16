@@ -1,12 +1,19 @@
 {
   "name": "ai-autocomplete",
   "description": "AI Autocomplete for coding agents: set up and install AI Autocomplete through a conversation.",
-  "owner": { "name": "MagicX" },
+  "owner": {
+    "name": "MagicX"
+  },
   "plugins": [
     {
       "name": "ai-autocomplete",
       "source": "./plugin",
       "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent."
+    },
+    {
+      "name": "ai-autocomplete-dev",
+      "source": "./plugin-dev",
+      "description": "The same plugin against the development API, for internal testing."
     }
   ]
 }

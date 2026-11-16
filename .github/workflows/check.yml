@@ -1,0 +1,11 @@
+name: check
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  dev-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/sync-dev-plugin.sh --check
