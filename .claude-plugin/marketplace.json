@@ -9,11 +9,6 @@
       "name": "ai-autocomplete",
       "source": "./plugin",
       "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent."
-    },
-    {
-      "name": "ai-autocomplete-dev",
-      "source": "./plugin-dev",
-      "description": "The same plugin against the development API, for internal testing."
     }
   ]
 }

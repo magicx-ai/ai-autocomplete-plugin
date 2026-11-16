@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "ai-autocomplete": {
-      "url": "https://dev-api.ai-autocomplete.com/api/agent-onboarding/mcp"
+      "url": "https://api.ai-autocomplete.com/api/agent-onboarding/mcp"
     }
   }
 }
