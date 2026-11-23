@@ -72,16 +72,30 @@ The grant ends when you send your next message. When you answer the final questi
 
 ## Codex
 
-1. Add the server:
+Open Codex in your project and paste this:
 
-   ```bash
-   codex mcp add ai-autocomplete --url https://api.ai-autocomplete.com/api/agent-onboarding/mcp
-   ```
+```
+Install AI Autocomplete using https://ai-autocomplete.com/agent-install.md
+```
 
-   You can also paste [`codex/config.toml.example`](codex/config.toml.example) into `~/.codex/config.toml`. By default Codex asks before each MCP tool call; the example's `default_tools_approval_mode = "approve"` lets the onboarding tools run without asking.
-2. Sign in once with `codex mcp login ai-autocomplete`, choosing your team in the browser.
-3. Copy [`agents-skill/ai-autocomplete-onboard`](agents-skill/ai-autocomplete-onboard) to `.agents/skills/` in your project (or to `~/.agents/skills/`).
-4. Run `$ai-autocomplete-onboard`, or ask Codex to onboard the project with AI Autocomplete.
+Codex installs the plugin and starts the sign-in, asking you to approve the commands it runs. It then gives you two steps:
+
+1. Open the sign-in link, choose the team the product should belong to and approve.
+2. Start a new Codex session in the project and type `$ai-autocomplete:onboard`. A plugin installed while a session is running is loaded only by the next one.
+
+### By hand
+
+```bash
+codex plugin marketplace add magicx-ai/ai-autocomplete-plugin
+codex plugin add ai-autocomplete@ai-autocomplete
+codex mcp login ai-autocomplete
+```
+
+Then start Codex in your project and run `$ai-autocomplete:onboard`, or ask Codex to onboard the project with AI Autocomplete.
+
+By default Codex asks before each MCP tool call. To let the onboarding tools run without asking, set `default_tools_approval_mode = "approve"` for the server, as in [`codex/config.toml.example`](codex/config.toml.example).
+
+Without the plugin, add the server with `codex mcp add ai-autocomplete --url https://api.ai-autocomplete.com/api/agent-onboarding/mcp`, copy [`agents-skill/ai-autocomplete-onboard`](agents-skill/ai-autocomplete-onboard) to `.agents/skills/` in your project (or to `~/.agents/skills/`), sign in as above and run `$ai-autocomplete-onboard`.
 
 ## Cursor
 
@@ -102,7 +116,7 @@ Useful things to say: what the box should offer first, what it must never sugges
 
 ## What happens
 
-1. The agent connects with the sign-in you already did. If you have not signed in, Claude Code opens the sign-in in your browser and waits for you to approve; Codex and Cursor tell you how to sign in and stop.
+1. The agent connects with the sign-in you already did. If you have not signed in, the agent starts the sign-in where its client lets it: Claude Code opens it in your browser and carries on once you approve, and Codex shows a link and asks you to start a new session afterwards. Where the client gives the agent no way to start it, the agent tells you how to sign in and stops.
 2. The agent reads your project and tells the onboarding agent what it found: the text box, what people do in it, each input and where its options live. It adds what you wrote with the command.
 3. The onboarding agent sets everything up from that. It asks you only what the code cannot answer, such as whether a list should be uploaded or filled in by your app when both are possible.
 4. If your data has to be uploaded, the agent uploads the file with a signed link. The file never goes into the conversation.
