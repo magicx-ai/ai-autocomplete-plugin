@@ -10,7 +10,11 @@ You sign in once, in your browser. Your coding agent keeps the sign-in and renew
 
 It connects to AI Autocomplete's remote MCP server. There is nothing to install locally besides your coding agent.
 
-> **Not released yet.** The production server is not switched on, so the sign-in does not work yet.
+## What you need
+
+- An AI Autocomplete account. The sign-in page lets you create one; plans are at https://ai-autocomplete.com/other/pricing.
+- A coding agent that connects to remote MCP servers with a browser sign-in: Claude Code, Codex or Cursor, in a current version.
+- Your project open in that agent, with the text box you want AI Autocomplete on.
 
 ## Claude Code
 
@@ -102,5 +106,11 @@ Useful things to say: what the box should offer first, what it must never sugges
 2. The agent reads your project and tells the onboarding agent what it found: the text box, what people do in it, each input and where its options live. It adds what you wrote with the command.
 3. The onboarding agent sets everything up from that. It asks you only what the code cannot answer, such as whether a list should be uploaded or filled in by your app when both are possible.
 4. If your data has to be uploaded, the agent uploads the file with a signed link. The file never goes into the conversation.
-5. The agent installs the SDK, keeping your own input box, and checks that it still submits as before.
+5. The agent installs the SDK. By default AI Autocomplete's box takes the place of your input box and keeps its look; say so if you would rather keep your own box and add only the suggestions. The agent then checks that the box still submits as before.
 6. You get one summary of what was set up and one question: anything you want changed? The agent applies what you ask, checks the install again and ends the session.
+
+## If something goes wrong
+
+- The install command fails: check that `claude plugin install` runs in your terminal and that your Claude Code is up to date, then use the steps under "By hand".
+- The sign-in does not finish: run `/mcp`, select `ai-autocomplete` and authenticate again.
+- Anything else: tell us through https://ai-autocomplete.com, with what you typed and what the agent answered.
