@@ -70,6 +70,10 @@ The grant ends when you send your next message. When you answer the final questi
 }
 ```
 
+### From Claude's plugin directory
+
+The plugin in Claude's directory (the Discover tab of `/plugin`) is the same onboarding with one difference: it approves only read-only tools ahead of time, as the directory requires. Claude asks you to approve AI Autocomplete's tools, file edits and shell commands as it goes. Installing with the sentence above gives you the version described under "Approvals".
+
 ## Codex
 
 Open Codex in your project and paste this:
@@ -128,3 +132,16 @@ Useful things to say: what the box should offer first, what it must never sugges
 - The install command fails: check that `claude plugin install` runs in your terminal and that your Claude Code is up to date, then use the steps under "By hand".
 - The sign-in does not finish: run `/mcp`, select `ai-autocomplete` and authenticate again.
 - Anything else: tell us through https://ai-autocomplete.com, with what you typed and what the agent answered.
+
+## For maintainers
+
+The repository holds the plugin twice, because the two ways of installing it allow different approvals:
+
+- [`plugin/`](plugin) is what this repository's own marketplace installs (`.claude-plugin/marketplace.json`). Its skill approves the onboarding's tools ahead of time.
+- [`discover/`](discover) is what Claude's plugin directory lists. Its skill approves read-only tools only. It carries its own `plugin.json`, `.mcp.json` and README, and it is not in this repository's marketplace.
+
+Edit the skill in `plugin/` only, then run `scripts/sync-discover.sh` to rebuild the copy in `discover/`. CI fails when the two differ. Raise `version` in `discover/.claude-plugin/plugin.json` with every change to `discover/`: the directory publishes a new version only when it changes.
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE).
