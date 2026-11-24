@@ -1,0 +1,14 @@
+{
+  "name": "ai-autocomplete",
+  "displayName": "AI Autocomplete",
+  "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent.",
+  "version": "1.0.0",
+  "author": {
+    "name": "MagicX Inc.",
+    "url": "https://magicx.ai"
+  },
+  "homepage": "https://ai-autocomplete.com",
+  "privacyPolicyUrl": "https://ai-autocomplete.com/legal/privacy",
+  "repository": "https://github.com/magicx-ai/ai-autocomplete-plugin",
+  "license": "Apache-2.0"
+}
