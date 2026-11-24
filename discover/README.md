@@ -40,7 +40,8 @@ Claude asks you to approve the AI Autocomplete tools, file edits and shell comma
 
 ## Privacy
 
-Privacy policy: https://ai-autocomplete.com/legal/privacy. Terms: https://ai-autocomplete.com/legal/terms.
+- [Privacy policy](https://ai-autocomplete.com/legal/privacy)
+- [Terms of service](https://ai-autocomplete.com/legal/terms)
 
 ## Help
 

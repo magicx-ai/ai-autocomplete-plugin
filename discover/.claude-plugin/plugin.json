@@ -8,7 +8,6 @@
     "url": "https://magicx.ai"
   },
   "homepage": "https://ai-autocomplete.com",
-  "privacyPolicyUrl": "https://ai-autocomplete.com/legal/privacy",
   "repository": "https://github.com/magicx-ai/ai-autocomplete-plugin",
   "license": "Apache-2.0"
 }
