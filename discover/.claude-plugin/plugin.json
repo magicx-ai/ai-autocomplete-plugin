@@ -1,13 +1,13 @@
 {
-  "name": "ai-autocomplete",
-  "displayName": "AI Autocomplete",
-  "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent.",
-  "version": "1.0.0",
+  "name": "intent-1",
+  "displayName": "Intent-1",
+  "description": "Set up and install Intent-1 in your project through a conversation with its onboarding agent.",
+  "version": "2.0.0",
   "author": {
     "name": "MagicX Inc.",
     "url": "https://magicx.ai"
   },
-  "homepage": "https://ai-autocomplete.com",
-  "repository": "https://github.com/magicx-ai/ai-autocomplete-plugin",
+  "homepage": "https://magicx.ai/intent-1",
+  "repository": "https://github.com/magicx-ai/intent-1-plugin",
   "license": "Apache-2.0"
 }

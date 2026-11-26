@@ -1,20 +1,20 @@
 {
-  "name": "ai-autocomplete",
-  "description": "AI Autocomplete for coding agents: set up and install AI Autocomplete through a conversation.",
+  "name": "intent-1",
+  "description": "Intent-1 for coding agents: set up and install Intent-1 through a conversation.",
   "owner": {
     "name": "MagicX"
   },
   "plugins": [
     {
-      "name": "ai-autocomplete",
+      "name": "intent-1",
       "source": "./plugin",
-      "description": "Set up and install AI Autocomplete in your project through a conversation with its onboarding agent.",
+      "description": "Set up and install Intent-1 in your project through a conversation with its onboarding agent.",
       "author": {
         "name": "MagicX"
       },
       "strict": false,
       "mcpServers": {
-        "ai-autocomplete": {
+        "intent-1": {
           "type": "http",
           "url": "https://api.ai-autocomplete.com/api/agent-onboarding/mcp"
         }
