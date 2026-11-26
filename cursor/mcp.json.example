@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "ai-autocomplete": {
+    "intent-1": {
       "url": "https://api.ai-autocomplete.com/api/agent-onboarding/mcp"
     }
   }
